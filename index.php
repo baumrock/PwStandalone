@@ -1,10 +1,6 @@
 <?php namespace ProcessWire;
 require(__DIR__."/vendor/autoload.php");
-
-// get example
 $sanitizer = new Sanitizer();
-$example = $sanitizer->text(@$_GET['example']);
-
 $files = new WireFileTools();
 ?><!DOCTYPE html>
 <html lang="en">
@@ -12,11 +8,8 @@ $files = new WireFileTools();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ProcessWire Standalone</title>
-  <!-- UIkit CSS -->
   <link rel="stylesheet" href="lib/uikit.min.css" />
   <link rel="stylesheet" href="lib/highlight.min.css" />
-
-  <!-- UIkit JS -->
   <script src="lib/uikit.min.js"></script>
   <script src="lib/uikit-icons.min.js"></script>
   <script src="lib/highlight.min.js"></script>
@@ -33,6 +26,7 @@ $files = new WireFileTools();
         <a href="/" class='uk-float-right'><span uk-icon="home"></span></a>
       </h1>
       <?php
+      $example = $sanitizer->text(@$_GET['example']);
       if($example) {
         echo "<h2>Example: <strong>$example</strong></h2>";
         $file = "examples/$example.php";
@@ -41,7 +35,6 @@ $files = new WireFileTools();
         include($file);
       }
       else {
-
         echo "Examples:";
         echo "<ul>";
         $options = ['extension' => ['php'], 'recursive' => 1];
