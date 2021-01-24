@@ -22,10 +22,10 @@ $files = new WireFileTools();
   <script src="lib/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
   <style>
-  html,body{height:100%;width:100%;}
+  html,body{height:100%;width:100%;background:#f8f8f8;}
   </style>
 </head>
-<body class='uk-background-muted'>
+<body>
   <section>
     <div class="uk-container uk-card uk-card-body uk-card-default">
       <h1>
@@ -34,6 +34,7 @@ $files = new WireFileTools();
       </h1>
       <?php
       if($example) {
+        echo "<h2>Example: <strong>$example</strong></h2>";
         $file = "examples/$example.php";
         $code = htmlspecialchars(file_get_contents($file));
         echo "<pre><code language='php'>$code</code></pre>";
@@ -46,7 +47,9 @@ $files = new WireFileTools();
         $options = ['extension' => ['php'], 'recursive' => 1];
         foreach($files->find(__DIR__."/examples", $options) as $file) {
           $name = pathinfo($file, PATHINFO_FILENAME);
+          $error = strpos($name, "_") === 0;
           $link = "<a href='?example=$name'>$name</a>";
+          if($error) $link .= " <span class='uk-text-danger'>error</span>";
           echo "<li>$link</li>";
         }
         echo "</ul>";
@@ -54,7 +57,7 @@ $files = new WireFileTools();
       ?>
     </div>
   </section>
-  <div class='uk-margin uk-text-center uk-text-small'>
+  <div class='uk-padding-small uk-text-center uk-text-small'>
     <a href='https://www.baumrock.com'>baumrock.com</a>
   </div>
 </body>
