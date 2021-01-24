@@ -4,3 +4,4 @@ The ProcessWire core has many great classes such as WireData, WireArray, WireRan
 
 This repo helps testing those features and hopefully will motivate others to share their findings (as PRs). It's as simple as creating a new file in the `examples` folder!
 
+![img](https://i.imgur.com/oDH8MyK.png)

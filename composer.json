@@ -1,0 +1,21 @@
+{
+    "name": "baumrock/pwstandalone",
+    "description": "Example of how to use ProcessWire core classes without a DB connection.",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bernhard Baumrock",
+            "email": "office@baumrock.com"
+        }
+    ],
+    "require": {
+        "processwire/processwire": "^3.0",
+        "tracy/tracy": "^2.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "ProcessWire\\": "vendor/processwire/processwire/wire/core"
+        }
+    }
+}
